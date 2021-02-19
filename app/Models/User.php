@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,9 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'business_name', 'country_code', 'mobile', 'email', 'password', 'fail_attempt', 'addr_1', 'addr_2', 'city', 'country', 'zip', 'periodic_billing', 'communication_preference', 'notification_preference', 'timezone', 'status', 'admin_note'
     ];
 
     /**
@@ -28,8 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -40,4 +36,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
+    /**
+     * Set the user's notification_preference.
+     *
+     * @param  array  $value
+     * @return void
+     */
+    public function setNotificationPreferenceAttribute($value)
+    {
+        $this->attributes['notification_preference'] = implode(',', $value);
+    }
+
+    /**
+     * Get the user's notification_preference.
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getNotificationPreferenceAttribute($value)
+    {
+        return explode(',', $value);
+    }
 }

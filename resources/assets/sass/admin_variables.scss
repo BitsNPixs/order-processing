@@ -1,0 +1,145 @@
+// Theme Layout
+$layout:       'layout_1';
+
+// Icons
+$im-font-path : '../fonts';
+
+
+//
+// Layout
+// ------------------------------
+//
+
+//** Sidebar navigation types
+$enable-sidebar-nav-icons-reverse:	  true;
+$enable-sidebar-nav-bordered:		  true;
+
+//** Boxed layouts
+$enable-boxed:						  true;
+
+//** Flash of unstyled content (FOUC) fix for jQuery 3.*
+$enable-fouc-fix:					  true;
+
+
+//
+// Components
+// ------------------------------
+//
+
+//** UI things
+$enable-header-elements:			  true;
+$enable-headroom:					  true;
+$enable-scrollbar:					  true;
+$enable-slinky:						  true;
+$enable-sticky:						  true;
+$enable-blockui:					  false;
+$enable-ripple:						  false;
+
+
+//** Forms
+$enable-uniform:					  false;
+$enable-switchery:					  false;
+$enable-bootstrap-switch:			  false;
+
+$enable-select2:					  true;
+$enable-multiselect:				  false;
+
+$enable-typeahead:					  false;
+$enable-passy:						  true;
+$enable-validation:					  false;
+$enable-alpaca:						  false;
+$enable-wizard:						  false;
+$enable-dual-listbox:				  false;
+$enable-touchspin:					  false;
+$enable-floating-labels:			  false;
+
+$enable-tags-input:					  false;
+$enable-tokenfield:					  false;
+
+
+//** Editors
+$enable-summernote:					  false;
+$enable-trumbowyg:					  false;
+$enable-ace:						  false;
+
+
+//** Pickers
+$enable-daterange:					  false;
+$enable-pickadate:					  false;
+$enable-anytime:					  false;
+$enable-spectrum:					  false;
+
+
+//** File uploaders
+$enable-plupload:					  false;
+$enable-fileinput:					  true;
+$enable-dropzone:					  false;
+
+
+//** Notifications
+$enable-pnotify:					  false;
+$enable-noty:						  false;
+$enable-jgrowl:						  false;
+$enable-sweetalert:					  false;
+
+
+//** Sliders
+$enable-noui:						  false;
+$enable-ion:						  false;
+
+
+//** Charts
+$enable-charts:						  false;
+$enable-d3:							  false;
+$enable-c3:							  false;
+
+
+//** Maps
+$enable-google-maps:				  false;
+$enable-vector-maps:				  false;
+
+
+//** jQuery UI
+$enable-jqueryui:					  false;
+$enable-jqueryui-pips:				  false;
+
+
+//** Tables
+$enable-datatable:					  true;
+$enable-datatable-select:			  true;
+$enable-datatable-scroller:			  true;
+$enable-datatable-row-reorder:		  true;
+$enable-datatable-responsive:		  true;
+$enable-datatable-keytable:			  true;
+$enable-datatable-fixed-header:		  true;
+$enable-datatable-fixed-columns:	  true;
+$enable-datatable-colreorder:		  true;
+$enable-datatable-buttons:			  true;
+$enable-datatable-autofill:			  true;
+
+$enable-footable:					  true;
+
+
+//** Page kits
+$enable-blog:						  false;
+$enable-timeline:					  false;
+$enable-login:						  true;
+$enable-error:						  true;
+$enable-profile:					  false;
+$enable-tasks:						  false;
+$enable-inbox:						  false;
+$enable-chat:						  true;
+$enable-ecommerce:					  false;
+
+
+//** Misc
+$enable-fab:						  false;
+$enable-fancybox:					  false;
+$enable-fancytree:					  false;
+$enable-fullcalendar:				  false;
+$enable-image-cropper:				  false;
+$enable-ladda:						  false;
+$enable-pace:						  false;
+$enable-dragula:					  false;
+$enable-prism:						  false;
+$enable-demo:						  false;
