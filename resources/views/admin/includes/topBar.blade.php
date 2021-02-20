@@ -2,7 +2,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{ route('admin.index') }}" class="d-inline-block">
-				{{ config('add.name') }}
+				{{ config('app.name') }}
 			</a>
 		</div>
 
@@ -24,7 +24,7 @@
 					</a>
 				</li>
 			</ul>
-			
+
 			<ul class="navbar-nav">
 
 				<li class="nav-item dropdown dropdown-user">

@@ -1,4 +1,9 @@
 <?php
+/**
+ * List of application payment status
+ *
+ * @return array
+ */
 function getPaymentStatus(){
 	return [
 		"UNPAID" => [
@@ -24,11 +29,22 @@ function getPaymentStatus(){
 	];
 }
 
+/**
+ * Get list of payment status code
+ *
+ * @return array
+ */
 function getAllPaymentStatusCodes()
 {
 	return Arr::pluck(getPaymentStatus(), 'code');
 }
 
+/**
+ * Get payment status text by code
+ *
+ * @param $code
+ * @return string|null
+ */
 function getPaymentStatusText($code)
 {
 	foreach (getPaymentStatus() as $status) {
@@ -39,6 +55,12 @@ function getPaymentStatusText($code)
 	return null;
 }
 
+/**
+ * Get payment status code by key
+ *
+ * @param $key
+ * @return string|null
+ */
 function getPaymentStatusCode($key){
 	$order_status = getPaymentStatus();
 	if ($order_status[$key]) {
@@ -46,6 +68,13 @@ function getPaymentStatusCode($key){
 	}
 	return null;
 }
+
+/**
+ * Get list of payment status codes by keys
+ *
+ * @param mixed ...$keys
+ * @return array
+ */
 
 function getPaymentStatusCodes(...$keys){
 	$order_status = getPaymentStatus();

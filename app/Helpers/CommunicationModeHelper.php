@@ -1,4 +1,9 @@
 <?php
+/**
+ * List for all communication modes
+ *
+ * @return array
+ */
 function getCommunicationModes(){
 	return [
 		"PORTAL" => [
@@ -12,11 +17,22 @@ function getCommunicationModes(){
 	];
 }
 
+/**
+ * Get list of communication mode code
+ *
+ * @return array
+ */
 function getAllCommunicationModeCodes()
 {
 	return Arr::pluck(getCommunicationModes(), 'code');
 }
 
+/**
+ * Get communication mode text by code
+ *
+ * @param $code
+ * @return string|null
+ */
 function getCommunicationModeText($code)
 {
 	foreach (getCommunicationModes() as $status) {
@@ -27,6 +43,12 @@ function getCommunicationModeText($code)
 	return null;
 }
 
+/**
+ * Get communication mode code by key
+ *
+ * @param $key
+ * @return string|null
+ */
 function getCommunicationModeCode($key){
 	$order_status = getCommunicationModes();
 	if ($order_status[$key]) {
@@ -35,6 +57,12 @@ function getCommunicationModeCode($key){
 	return null;
 }
 
+/**
+ * Get list of communication mode codes by keys
+ *
+ * @param mixed ...$keys
+ * @return array
+ */
 function getCommunicationModeCodes(...$keys){
 	$order_status = getCommunicationModes();
 	$codes = [];

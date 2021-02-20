@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Get formatted price
+ *
+ * @param $price
+ * @return int
+ */
 function getPrice($price)
 {
 	$value = explode(".",$price);
@@ -9,6 +14,11 @@ function getPrice($price)
 		return $price;
 }
 
+/**
+ * Get app currency symbol
+ *
+ * @return string
+ */
 function getCurrency()
 {
 	return '$';

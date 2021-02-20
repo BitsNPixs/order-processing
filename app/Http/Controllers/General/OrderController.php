@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 
-
 class OrderController extends Controller
 {
 	protected $creatorType;
 	protected $creator;
-
 
 	public function __construct($creator, $type)
 	{
@@ -19,6 +17,14 @@ class OrderController extends Controller
 		$this->creatorType = $type;
 	}
 
+    /**
+     * Create new order record
+     *
+     * @param $customer
+     * @param $service
+     * @param $data
+     * @return mixed
+     */
 	public function createOrder($customer, $service, $data)
 	{
 		$quantity = $data['quantity'];
@@ -49,15 +55,24 @@ class OrderController extends Controller
         return $order;
 	}
 
+    /**
+     * Activate order without payment
+     *
+     * @param Order $order
+     */
 	public function activateOrderWithoutPayment(Order $order)
 	{
 		$this->activateOrder($order, true);
 	}
 
+    /**
+     * Activate order
+     *
+     * @param Order $order
+     * @param bool $withoutPayment
+     */
 	public function activateOrder(Order $order, $withoutPayment = false)
 	{
-		// $order = Order::find($orderId);
-
 		$paymentStatus = $withoutPayment? 'PAID' : 'UNPAID';
 
 		$order->update([

@@ -13,18 +13,9 @@ class HelperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        require_once app_path('Helpers/LocalDateTimeHelper.php');
-//        require_once app_path('Helpers/InfoHelper.php');
-//        require_once app_path('Helpers/TextFormatHelper.php');
         require_once app_path('Helpers/OrderStatusCodeHelper.php');
-//        require_once app_path('Helpers/ChatTypeCodeHelper.php');
-//        require_once app_path('Helpers/ChatFileHelper.php');
-//        require_once app_path('Helpers/SettingsHelper.php');
         require_once app_path('Helpers/PriceHelper.php');
-        require_once app_path('Helpers/OrderCountHelper.php');
-//        require_once app_path('Helpers/JobStatusAuditCodeHelper.php');
-       require_once app_path('Helpers/CommunicationModeHelper.php');
-//        require_once app_path('Helpers/NotificationModeHelper.php');
+        require_once app_path('Helpers/CommunicationModeHelper.php');
         require_once app_path('Helpers/PaymentStatusHelper.php');
     }
 

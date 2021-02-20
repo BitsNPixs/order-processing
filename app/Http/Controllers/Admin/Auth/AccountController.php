@@ -2,49 +2,59 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class AccountController extends Controller
 {
+    /**
+     * Show admin login screen
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getLogin()
     {
-        return view("login");
+        return view("admin.login");
     }
 
+    /**
+     * Handel admin login post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required',
+        $data = $request->validate([
+            'username' => 'required',
             'password' => 'required',
         ],[
-            "email.required" => "email is required",
+            "username.required" => "Username is required",
             "password.required" => "Password is required"
         ]);
 
-        $attemptLogin = Auth::attempt(['email' => $request->get("email"), 'password' => $request->get("password"), 'status' => 1], true);
+        $attemptLogin = Auth::guard('admin')->attempt(['username' => $data["username"], 'password' => $data["password"], 'status' => 1], true);
 
         if ($attemptLogin) {
-            User::where('email', $request->get("email"))->update(['fail_attempt' => 0]);
+            Admin::where('username', $data["username"])->update(['fail_attempt' => 0]);
 
-            return redirect()->intended(route('index'));
+            return redirect()->intended(route('adminOrders'));
         }
         else{
-            $user = User::where("email", $request->get("email"))->first();
-            if ($user != null){
-                $user->increment('fail_attempt');
-                if ($user->fail_attempt == 5){
-                    $user->status = 0;
-                    $user->save();
+            $admin = Admin::where("username", $data["username"])->first();
+            if ($admin != null){
+                $admin->increment('fail_attempt');
+                if ($admin->fail_attempt == 5){
+                    $admin->status = 0;
+                    $admin->save();
                     $msg = 'You account suspended. Contact administrator.';
                 }
-                elseif ($user->fail_attempt > 5)
+                elseif ($admin->fail_attempt > 5)
                     $msg = 'You account suspended. Contact administrator.';
                 else{
-                    $msg = sprintf("Invalid login credentials.\r\n Attempt remaining %s", 5 - $user->fail_attempt);
+                    $msg = sprintf("Invalid login credentials.\r\n Attempt remaining %s", 5 - $admin->fail_attempt);
                 }
             }
             else
@@ -54,25 +64,43 @@ class AccountController extends Controller
         }
     }
 
+    /**
+     * Logout admin
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getLogout()
     {
         Auth::logout();
-        return redirect()->route("login");
+        return redirect()->route("admin.login");
     }
 
+    /**
+     * Show admin password update screen
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getUpdatePassword()
     {
         return view("admin.updatePassword");
     }
 
+    /**
+     * Handel admin update password post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postUpdatePassword(Request $request)
     {
-        $this->validate($request, [
+        $data = $request->validate([
             "password" => "bail|required|confirmed",
             "password_confirmation" => "required"
         ]);
-        $user = User::find(Auth::user()->id)->update(["password" => Hash::make($request->get("password"))]);
-        if ($user) {
+
+        $admin = Admin::find(Auth::user()->id);
+
+        if ($admin) {
+            $admin->update(["password" => Hash::make($data["password"])]);
             return redirect()->back()->with("message", "Password update successfully");
         } else {
             return redirect()->back()->withInput()->withErrors("Unexpected error. Contact webmaster");

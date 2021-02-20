@@ -11,26 +11,12 @@ use Carbon\Carbon;
 class OrderController extends Controller
 {
     /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * Show admin orders list screen
+     *
+     * @param Request $request
+     * @param string $type
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function getStartWorking($id)
-    {
-        $orderItem = OrderItem::find($id);
-
-        if (checkOrderStatus($orderItem, 'PENDIND_REQUIREMENT')){
-            return redirect()->route('adminStartOrder', $orderItem);
-        }
-
-        abort_if($orderItem == null, 404);
-
-        $orderItem->update([
-            'status' => getOrderStatusCode('IN_PROGRESS')
-        ]);
-
-        return redirect()->route('adminOrderDetails', $orderItem);
-    }
-
     public function getOrders(Request $request, $type = 'archive')
     {
         $orderStatus = 1;
@@ -69,15 +55,4 @@ class OrderController extends Controller
 
         return view('admin.orders')->with(compact('orderItems', 'type', 'meta'));
     }
-
-    public function getOrderDetails($id)
-    {
-        $orderItem = OrderItem::find($id);
-
-
-        abort_if($orderItem == null, 404);
-
-        return view('admin.orderDetails')->with(compact('orderItem'));
-    }
-
 }

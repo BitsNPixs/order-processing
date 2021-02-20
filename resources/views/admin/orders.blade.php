@@ -25,12 +25,11 @@
                 <table class="table datatable-responsive">
                     <thead>
                         <tr>
-                            <th>Order</th>
+                            <th>Order Id</th>
                             <th>Customer</th>
                             <th>Service</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,9 +46,6 @@
                             </td>
                             <td>{{ getCurrency() }} {{ getPrice($orderItem->price) }}</td>
                             <td>{{ getOrderStatusText($orderItem->status) }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('adminOrderDetails', $orderItem) }}" class="dropdown-item">View Details</a>
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>

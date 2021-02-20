@@ -24,7 +24,7 @@
                 <table class="table datatable-responsive">
                     <thead>
                         <tr>
-                            <th>Order</th>
+                            <th>Order Id</th>
                             <th>Services</th>
                             <th>Total</th>
                             <th>Status</th>

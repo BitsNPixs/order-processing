@@ -10,14 +10,26 @@ use App\Models\User;
 
 class AccountController extends Controller
 {
+    /**
+     * Show user login screen
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getLogin()
     {
         return view("login");
     }
 
+    /**
+     * Handle user login post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
+        $data = $request->validate([
             'email' => 'required',
             'password' => 'required',
         ],[
@@ -25,15 +37,15 @@ class AccountController extends Controller
             "password.required" => "Password is required"
         ]);
 
-        $attemptLogin = Auth::attempt(['email' => $request->get("email"), 'password' => $request->get("password"), 'status' => 1], true);
+        $attemptLogin = Auth::attempt(['email' => $data["email"], 'password' => $data["password"], 'status' => 1], true);
 
         if ($attemptLogin) {
-            User::where('email', $request->get("email"))->update(['fail_attempt' => 0]);
+            User::where('email', $data["email"])->update(['fail_attempt' => 0]);
 
             return redirect()->intended(route('index'));
         }
         else{
-            $user = User::where("email", $request->get("email"))->first();
+            $user = User::where("email", $data["email"])->first();
             if ($user != null){
                 $user->increment('fail_attempt');
                 if ($user->fail_attempt == 5){
@@ -54,25 +66,42 @@ class AccountController extends Controller
         }
     }
 
+    /**
+     * Logout user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getLogout()
     {
         Auth::logout();
         return redirect()->route("login");
     }
 
+    /**
+     * Show user update password screen
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getUpdatePassword()
     {
         return view("updatePassword");
     }
 
+    /**
+     * Handle user update password post
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postUpdatePassword(Request $request)
     {
-        $this->validate($request, [
+        $data = $request->validate([
             "password" => "bail|required|confirmed",
             "password_confirmation" => "required"
         ]);
-        $user = User::find(Auth::user()->id)->update(["password" => Hash::make($request->get("password"))]);
+
+        $user = User::find(Auth::user()->id);
+
         if ($user) {
+            $user->update(["password" => Hash::make($data["password"])]);
             return redirect()->back()->with("message", "Password update successfully");
         } else {
             return redirect()->back()->withInput()->withErrors("Unexpected error. Contact webmaster");

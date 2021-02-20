@@ -19,6 +19,12 @@ class PurchaseController extends Controller
         $this->orderLogic = new OrderLogic(Auth::user(), 'user');
     }
 
+    /**
+     * Show order now screen
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getOrderNow($id)
     {
     	$service = Service::where('status', 1)->where('id', $id)->first();
@@ -27,6 +33,13 @@ class PurchaseController extends Controller
 		return view('orderNow', compact('service'));
     }
 
+    /**
+     * Handle order now post
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postOrderNow(Request $request, $id)
     {
     	$service = Service::where('status', 1)->where('id', $id)->first();
@@ -54,28 +67,4 @@ class PurchaseController extends Controller
 
         return redirect()->route('orders');
     }
-
-//    public function getStartOrder($id)
-//    {
-//        $orderId = $id != null ? $id : session('orderId');
-//        $order = Order::find($orderId);
-//        abort_if($order == null, 404);
-//
-//        $user = Auth::user();
-//
-//        if ($order->user->id != $user->id){
-//            return redirect()->route('orders')->with(['msg' => 'You don\'t have right permission to access that page.', 'msgType' => 'danger']);
-//        }
-//
-//        $orderItem = $order->items()->first();
-//
-//        // TODO: Check if order item status is pending requirement, else redirect to order details page.
-//        if ($orderItem->status != getOrderStatusCode('PENDIND_REQUIREMENT')){
-//            return redirect()->route('orderDetails', $orderId);
-//        }
-//
-//        $service = $orderItem->service;
-//
-//        return view('startOrder')->with(compact('order', 'orderItem', 'service'));
-//    }
 }
