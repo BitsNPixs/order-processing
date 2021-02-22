@@ -6,7 +6,7 @@
 @section("content")
 
     <div class="row">
-        <h4>Welcome to sample application. Visit order menu to see list of orders.</h4>
+        <h4>Welcome to the Sampler Application, “Order Processing System”. Visit Order Management Menu to see the list of Orders</h4>
     </div>
 
 @endsection
