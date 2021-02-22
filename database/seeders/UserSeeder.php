@@ -18,12 +18,12 @@ class UserSeeder extends Seeder
     {
         Model::unguard();
 
-        $user = User::where("email", "demo@example.com")->count();
+        $user = User::where("email", "demo@bitsnpixs.com")->count();
 
         if ($user == 0)
             User::create([
-                "name" => "User",
-                "email" => "demo@example.com",
+                "name" => "Demo User",
+                "email" => "demo@bitsnpixs.com",
                 "password" => Hash::make("abc@123"),
                 "status" => 1
             ]);
