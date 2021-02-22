@@ -1,8 +1,8 @@
-Order Processing
+Sample Order Processing System
 ================================================
-Sample order processing system to showcase coding style.
+This repository contains sample code for an Order Processing System to showcase our Coding Style and Standards. This repository is provided for example purposes only.
 
-## Framework
+## Framework Used
 - [Laravel 8.x](https://laravel.com/docs/8.x/)
 
 ## Prerequisites
@@ -11,7 +11,7 @@ Sample order processing system to showcase coding style.
 - [Node JS > 12](https://nodejs.org/) and npm
 
 ## Composer Dependencies
- none
+ None.
 
 ## Style Dependencies
 - [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
@@ -25,4 +25,15 @@ Sample order processing system to showcase coding style.
 - AdminSeeder (in default)
 - ServiceSeeder (in default)
 - UserSeeder
+
+## Getting The Code
+Get started by downloading the code:
+
+$ git clone BitsNPixs/order-processing
+
+## License
+
+This repository is distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, and is not part of any Bitsnpixs product offerings.
+
+Copyright 2021 Bitsnpixs Technologies Pvt.Ltd
 
