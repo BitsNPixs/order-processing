@@ -37,8 +37,9 @@ This serves as the backend for the Order Manager for Processing the Orders.
 ## Getting The Code
 Get started by downloading the code:
 
-$ git clone BitsNPixs/order-processing
-
+````
+git clone https://github.com/BitsNPixs/order-processing-sampler.git
+````
 ## License
 
 This repository is distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, and is not part of any Bitsnpixs product offerings.
