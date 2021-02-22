@@ -28,6 +28,7 @@
                             <th>Order Id</th>
                             <th>Customer</th>
                             <th>Service</th>
+                            <th>Quantity</th>
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
@@ -43,6 +44,9 @@
                             </td>
                             <td>
                                 {{ $orderItem->service_name }}
+                            </td>
+                            <td>
+                                {{ $orderItem->quantity }}
                             </td>
                             <td>{{ getCurrency() }} {{ getPrice($orderItem->price) }}</td>
                             <td>{{ getOrderStatusText($orderItem->status) }}</td>
