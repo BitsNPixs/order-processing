@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Auth::loginUsingId(1);
-//
-//Auth::guard('admin')->loginUsingId(1);
+
 Route::get('/login','Auth\AccountController@getLogin')->name('login')->middleware('guest');
 Route::post('/login','Auth\AccountController@postLogin');
 
@@ -28,9 +26,6 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/order-now/{id}', 'PurchaseController@postOrderNow');
 
     Route::get('/orders', 'OrderController@getOrders')->name('orders');
-    Route::get('/update-password', 'Auth\AccountController@getUpdatePassword')->name('updatePassword');
-    Route::post('/update-password', 'Auth\AccountController@postUpdatePassword');
-
     Route::get('/logout', 'Auth\AccountController@getLogout')->name('logout');
 });
 

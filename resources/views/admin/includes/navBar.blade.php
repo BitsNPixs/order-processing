@@ -50,9 +50,6 @@
 							<a href="{{ route('adminOrders', ['type' => 'delivered']) }}" class="nav-link">Delivered</a>
 						</li>
 						<li class="nav-item">
-							<a href="{{ route('adminOrders', ['type' => 'archive']) }}" class="nav-link">Order Archive</a>
-						</li>
-						<li class="nav-item">
 							<a href="{{ route('adminOrders', ['type' => 'pending-payment']) }}" class="nav-link">Pending Orders</a>
 						</li>
 					</ul>

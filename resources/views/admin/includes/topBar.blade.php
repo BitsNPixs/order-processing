@@ -34,8 +34,6 @@
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="{{route('admin.updatePassword')}}" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
-						<div class="dropdown-divider"></div>
 						<a href="{{ route('admin.logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
 					</div>
 				</li>

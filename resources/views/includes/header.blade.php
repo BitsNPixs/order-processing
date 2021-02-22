@@ -4,7 +4,7 @@ $_controller = explode("@", basename(str_replace('\\', '/', Route::currentRouteA
 
 <!-- Page header -->
 	<div class="page-header">
-		
+
 		@if(Auth::check())
 
 		<!-- Page header content -->
@@ -65,8 +65,6 @@ $_controller = explode("@", basename(str_replace('\\', '/', Route::currentRouteA
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right">
-							<a href="{{route('updatePassword')}}" class="dropdown-item"><i class="icon-lock2"></i> Update Profile</a>
-							<div class="dropdown-divider"></div>
 							<a href="{{route('logout')}}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
 						</div>
 					</li>
