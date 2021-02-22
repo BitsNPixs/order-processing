@@ -1,16 +1,14 @@
 @import 'variables';
 
 
-@import "../scss/shared/icons/icomoon/compile/styles";
+@import "./theme/shared/icons/icomoon/compile/styles";
 
-@import "../scss/layouts/layout_5/default/compile/bootstrap";
-@import "../scss/layouts/layout_5/default/compile/bootstrap_limitless";
+@import "./theme/layouts/layout_5/default/compile/bootstrap";
+@import "./theme/layouts/layout_5/default/compile/bootstrap_limitless";
 
-@import "../scss/layouts/layout_5/default/compile/layout";
+@import "./theme/layouts/layout_5/default/compile/layout";
 
-@import "../scss/layouts/layout_5/default/compile/components";
+@import "./theme/layouts/layout_5/default/compile/components";
 
-@import "../scss/layouts/layout_5/default/compile/colors";
+@import "./theme/layouts/layout_5/default/compile/colors";
 
-
-@import "./shared/chatAttachment";
