@@ -35,5 +35,5 @@ $ git clone BitsNPixs/order-processing
 
 This repository is distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, and is not part of any Bitsnpixs product offerings.
 
-Copyright 2021 Bitsnpixs Technologies Pvt.Ltd
+Copyright 2021 Bitsnpixs Technologies Pvt. Ltd.
 
