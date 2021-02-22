@@ -30,6 +30,7 @@
                             <th>Service</th>
                             <th>Quantity</th>
                             <th>Price</th>
+                            <th>Total</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -48,7 +49,8 @@
                             <td>
                                 {{ $orderItem->quantity }}
                             </td>
-                            <td>{{ getCurrency() }} {{ getPrice($orderItem->price) }}</td>
+                            <td>{{ getCurrency() }}{{ getPrice($orderItem->price) }}</td>
+                            <td>{{ getCurrency() }}{{ getPrice($orderItem->price * $orderItem->quantity) }}</td>
                             <td>{{ getOrderStatusText($orderItem->status) }}</td>
                         </tr>
                         @endforeach

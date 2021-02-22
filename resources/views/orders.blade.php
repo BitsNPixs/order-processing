@@ -27,6 +27,7 @@
                             <th>Order Id</th>
                             <th>Services</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Total</th>
                             <th>Status</th>
                         </tr>
@@ -39,7 +40,8 @@
                                 <nobr>{{ $item->service_name }}</nobr>
                             </td>
                             <td>{{ $item->quantity }}</td>
-                            <td>${{ $item->quantity * $item->price }}</td>
+                            <td>{{ getCurrency() }}{{ $item->price }}</td>
+                            <td>{{ getCurrency() }}{{ $item->quantity * $item->price }}</td>
                             <td>{{ getOrderStatusText($item->status) }}</td>
                         </tr>
                         @endforeach
