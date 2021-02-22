@@ -9,7 +9,7 @@
 
 	<div class="navbar-collapse collapse" id="navbar-footer">
 		<span class="navbar-text">
-			&copy; {{ date('Y') }} Bitsnpixs.
+			&copy; {{ date('Y') }} Copyright 2021 Bitsnpixs Technologies Pvt. Ltd.
 		</span>
 	</div>
 </div>
