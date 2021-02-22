@@ -1,6 +1,14 @@
-Sample Order Processing System
+The Order Processing System Sampler
 ================================================
-This repository contains sample code for an Order Processing System to showcase our Coding Style and Standards. This repository is provided for example purposes only.
+This repository contains sample code for an **Order Processing System** to showcase our **Coding Style** and **Standards**. This repository is provided for example purposes only.
+
+The Order Processing System is having two modules Viz., **Customer Portal** and **Administration Portal**.
+
+**Customer Portal:**
+This allows the registered customer to login to the portal with their credentials and place orders on the services which we are offering.
+
+**Administration Portal**
+This serves as the backend for the Order Manager for Processing the Orders.
 
 ## Framework Used
 - [Laravel 8.x](https://laravel.com/docs/8.x/)
